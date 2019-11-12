@@ -46,25 +46,30 @@ type Wallet interface {
 	// This will error if an account with the name already exists.
 	CreateAccount(name string, passphrase []byte) (Account, error)
 
-	// ImportAccount creates a new account in the wallet from an existing private key.
-	// The only rule for names is that they cannot start with an underscore (_) character.
-	// This will error if an account with the name already exists.
-	ImportAccount(name string, key []byte, passphrase []byte) (Account, error)
-
 	// Accounts provides all accounts in the wallet.
 	Accounts() <-chan Account
 
 	// AccountByName provides a single account from the wallet given its name.
 	// This will error if the account is not found.
 	AccountByName(name string) (Account, error)
+}
 
+// WalletKeyProvider is the interface for wallets that can provide a key.
+type WalletKeyProvider interface {
 	// Key returns the wallet's key.
-	// This may or may not be present, depending on the wallet type.
 	Key() ([]byte, error)
+}
 
+// WalletExporter is the interface for wallets that can export themselves.
+type WalletExporter interface {
 	// Export exports the entire wallet, protected by an additional passphrase.
 	Export(passphrase []byte) ([]byte, error)
+}
 
-	// Import exports the entire wallet, protected by an additional passphrase.
-	// Import(passphrase []byte) ([]byte, error)
+// WalletAccountImporter is the interface for wallets that can import accounts.
+type WalletAccountImporter interface {
+	// ImportAccount creates a new account in the wallet from an existing private key.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name already exists.
+	ImportAccount(name string, key []byte, passphrase []byte) (Account, error)
 }

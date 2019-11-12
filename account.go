@@ -42,3 +42,9 @@ type Account interface {
 	// Sign signs data with the account.
 	Sign(data []byte, domain uint64) (types.Signature, error)
 }
+
+// AccountPrivateKeyProvider is the interface for accounts that can provide a private key.
+type AccountPrivateKeyProvider interface {
+	// PrivateKey provides the private key for the account.
+	PrivateKey() types.PrivateKey
+}
