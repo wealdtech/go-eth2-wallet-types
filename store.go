@@ -13,6 +13,8 @@
 
 package types
 
+import "github.com/google/uuid"
+
 // Store is the interface for wallet stores.  It is used to store and access data provided by wallets, both wallets themselves
 // as well as keys inside the wallets.
 type Store interface {
@@ -20,7 +22,7 @@ type Store interface {
 	Name() string
 
 	// StoreWallet stores wallet data.  It will fail if it cannot store the data.
-	StoreWallet(wallet Wallet, data []byte) error
+	StoreWallet(id uuid.UUID, name string, data []byte) error
 
 	// RetrieveWallet retrieves wallet data for a named wallet.
 	// It will fail if it cannot retrieve the data.
@@ -30,12 +32,12 @@ type Store interface {
 	RetrieveWallets() <-chan []byte
 
 	// StoreAccount stores account data.  It will fail if it cannot store the data.
-	StoreAccount(wallet Wallet, account Account, data []byte) error
+	StoreAccount(walletID uuid.UUID, walletName string, accountID uuid.UUID, accountName string, data []byte) error
 
 	// RetrieveAccount retrieves account data for a named wallet.
 	// It will fail if it cannot retrieve the data.
-	RetrieveAccount(wallet Wallet, name string) ([]byte, error)
+	RetrieveAccount(walletID uuid.UUID, walletName string, accountName string) ([]byte, error)
 
 	// RetrieveAccounts retrieves account information for all accounts.
-	RetrieveAccounts(wallet Wallet) <-chan []byte
+	RetrieveAccounts(id uuid.UUID, name string) <-chan []byte
 }
