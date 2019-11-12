@@ -46,5 +46,5 @@ type Account interface {
 // AccountPrivateKeyProvider is the interface for accounts that can provide a private key.
 type AccountPrivateKeyProvider interface {
 	// PrivateKey provides the private key for the account.
-	PrivateKey() types.PrivateKey
+	PrivateKey() (types.PrivateKey, error)
 }
