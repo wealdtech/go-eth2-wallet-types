@@ -46,6 +46,11 @@ type Wallet interface {
 	// This will error if an account with the name already exists.
 	CreateAccount(name string, passphrase []byte) (Account, error)
 
+	// ImportAccount creates a new account in the wallet from an existing private key.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name already exists.
+	ImportAccount(name string, key []byte, passphrase []byte) (Account, error)
+
 	// Accounts provides all accounts in the wallet.
 	Accounts() <-chan Account
 
