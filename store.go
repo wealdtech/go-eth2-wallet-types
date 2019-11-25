@@ -22,22 +22,30 @@ type Store interface {
 	Name() string
 
 	// StoreWallet stores wallet data.  It will fail if it cannot store the data.
-	StoreWallet(id uuid.UUID, name string, data []byte) error
-
-	// RetrieveWallet retrieves wallet data for a named wallet.
-	// It will fail if it cannot retrieve the data.
-	RetrieveWallet(walletName string) ([]byte, error)
+	StoreWallet(walletID uuid.UUID, walletName string, data []byte) error
 
 	// RetrieveWallet retrieves wallet data for all wallets.
 	RetrieveWallets() <-chan []byte
 
-	// StoreAccount stores account data.  It will fail if it cannot store the data.
-	StoreAccount(walletID uuid.UUID, walletName string, accountID uuid.UUID, accountName string, data []byte) error
-
-	// RetrieveAccount retrieves account data for a named wallet.
+	// RetrieveWallet retrieves wallet data for a wallet with a given name.
 	// It will fail if it cannot retrieve the data.
-	RetrieveAccount(walletID uuid.UUID, walletName string, accountName string) ([]byte, error)
+	RetrieveWallet(walletName string) ([]byte, error)
+
+	// RetrieveWalletByID retrieves wallet data for a wallet with a given ID.
+	// It will fail if it cannot retrieve the data.
+	RetrieveWalletByID(walletID uuid.UUID) ([]byte, error)
+
+	// StoreAccount stores account data.  It will fail if it cannot store the data.
+	StoreAccount(walletID uuid.UUID, accountID uuid.UUID, accountName string, data []byte) error
 
 	// RetrieveAccounts retrieves account information for all accounts.
-	RetrieveAccounts(id uuid.UUID, name string) <-chan []byte
+	RetrieveAccounts(walletID uuid.UUID) <-chan []byte
+
+	// RetrieveAccount retrieves account data for a wallet with a given name.
+	// It will fail if it cannot retrieve the data.
+	RetrieveAccount(walletID uuid.UUID, accountName string) ([]byte, error)
+
+	// RetrieveAccountByID retrieves account data for a wallet with a given ID.
+	// It will fail if it cannot retrieve the data.
+	RetrieveAccountByID(walletID uuid.UUID, accountID uuid.UUID) ([]byte, error)
 }
