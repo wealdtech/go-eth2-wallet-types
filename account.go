@@ -39,6 +39,9 @@ type Account interface {
 	// Unlock unlocks the account.  An unlocked account can sign.
 	Unlock([]byte) error
 
+	// IsUnlocked returns true if the account is unlocked.
+	isUnlocked() bool
+
 	// Sign signs data with the account.
 	Sign(data []byte, domain uint64) (types.Signature, error)
 }
