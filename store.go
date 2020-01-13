@@ -1,4 +1,4 @@
-// Copyright © 2019 Weald Technology Trading
+// Copyright 2019, 2020 Weald Technology Trading
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -36,16 +36,18 @@ type Store interface {
 	RetrieveWalletByID(walletID uuid.UUID) ([]byte, error)
 
 	// StoreAccount stores account data.  It will fail if it cannot store the data.
-	StoreAccount(walletID uuid.UUID, accountID uuid.UUID, accountName string, data []byte) error
+	StoreAccount(walletID uuid.UUID, accountID uuid.UUID, data []byte) error
 
 	// RetrieveAccounts retrieves account information for all accounts.
 	RetrieveAccounts(walletID uuid.UUID) <-chan []byte
 
-	// RetrieveAccount retrieves account data for a wallet with a given name.
+	// RetrieveAccount retrieves account data for a wallet with a given ID.
 	// It will fail if it cannot retrieve the data.
-	RetrieveAccount(walletID uuid.UUID, accountName string) ([]byte, error)
+	RetrieveAccount(walletID uuid.UUID, accountID uuid.UUID) ([]byte, error)
 
-	// RetrieveAccountByID retrieves account data for a wallet with a given ID.
-	// It will fail if it cannot retrieve the data.
-	RetrieveAccountByID(walletID uuid.UUID, accountID uuid.UUID) ([]byte, error)
+	// StoreAccountsIndex stores the index of accounts for a given wallet.
+	StoreAccountsIndex(walletID uuid.UUID, data []byte) error
+
+	// RetrieveAccountsIndex retrieves the index of accounts for a given wallet.
+	RetrieveAccountsIndex(walletID uuid.UUID) ([]byte, error)
 }

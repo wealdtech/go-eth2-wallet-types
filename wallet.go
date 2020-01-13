@@ -1,4 +1,4 @@
-// Copyright © 2019 Weald Technology Trading
+// Copyright 2019, 2020 Weald Technology Trading
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -48,6 +48,10 @@ type Wallet interface {
 
 	// Accounts provides all accounts in the wallet.
 	Accounts() <-chan Account
+
+	// AccountByID provides a single account from the wallet given its ID.
+	// This will error if the account is not found.
+	AccountByID(id uuid.UUID) (Account, error)
 
 	// AccountByName provides a single account from the wallet given its name.
 	// This will error if the account is not found.

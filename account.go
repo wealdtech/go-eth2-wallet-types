@@ -1,4 +1,4 @@
-// Copyright © 2019 Weald Technology Trading
+// Copyright 2019, 2020 Weald Technology Trading
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -50,4 +50,17 @@ type Account interface {
 type AccountPrivateKeyProvider interface {
 	// PrivateKey provides the private key for the account.
 	PrivateKey() (types.PrivateKey, error)
+}
+
+// AccountMetadata provides metadata for an account.  It is used for various accounting purposes, for example to ensure that
+// no two accounts with the sanme name exist in a single wallet.
+type AccountMetadata interface {
+	// WalletID provides the ID for the wallet.
+	WalletID() uuid.UUID
+
+	// ID provides the ID for the account.
+	ID() uuid.UUID
+
+	// Name provides the name for the account.
+	Name() string
 }
