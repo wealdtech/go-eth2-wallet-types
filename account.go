@@ -53,7 +53,7 @@ type AccountPrivateKeyProvider interface {
 }
 
 // AccountMetadata provides metadata for an account.  It is used for various accounting purposes, for example to ensure that
-// no two accounts with the sanme name exist in a single wallet.
+// no two accounts with the same name exist in a single wallet.
 type AccountMetadata interface {
 	// WalletID provides the ID for the wallet.
 	WalletID() uuid.UUID

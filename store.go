@@ -51,3 +51,14 @@ type Store interface {
 	// RetrieveAccountsIndex retrieves the index of accounts for a given wallet.
 	RetrieveAccountsIndex(walletID uuid.UUID) ([]byte, error)
 }
+
+// StoreProvider is the interface provides a store.
+type StoreProvider interface {
+	// Store returns the store.
+	Store() Store
+}
+
+// StoreLocationProvider provides the location of the store.
+type StoreLocationProvider interface {
+	Location() string
+}
