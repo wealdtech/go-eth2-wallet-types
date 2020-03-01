@@ -15,7 +15,7 @@ package types
 
 import (
 	"github.com/google/uuid"
-	types "github.com/wealdtech/go-eth2-types"
+	e2types "github.com/wealdtech/go-eth2-types/v2"
 )
 
 // Account is the interface for all Ethereum 2 accounts.
@@ -27,7 +27,7 @@ type Account interface {
 	Name() string
 
 	// PublicKey provides the public key for the account.
-	PublicKey() types.PublicKey
+	PublicKey() e2types.PublicKey
 
 	// Path provides the path for the account.
 	// Can be empty if the account is not derived from a path.
@@ -43,13 +43,13 @@ type Account interface {
 	IsUnlocked() bool
 
 	// Sign signs data with the account.
-	Sign(data []byte, domain uint64) (types.Signature, error)
+	Sign(data []byte) (e2types.Signature, error)
 }
 
 // AccountPrivateKeyProvider is the interface for accounts that can provide a private key.
 type AccountPrivateKeyProvider interface {
 	// PrivateKey provides the private key for the account.
-	PrivateKey() (types.PrivateKey, error)
+	PrivateKey() (e2types.PrivateKey, error)
 }
 
 // AccountMetadata provides metadata for an account.  It is used for various accounting purposes, for example to ensure that
