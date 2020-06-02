@@ -6,7 +6,7 @@
 [![Travis CI](https://img.shields.io/travis/wealdtech/go-eth2-wallet-types.svg)](https://travis-ci.org/wealdtech/go-eth2-wallet-types)
 [![codecov.io](https://img.shields.io/codecov/c/github/wealdtech/go-eth2-wallet-types.svg)](https://codecov.io/github/wealdtech/go-eth2-wallet-types)
 
-Go library containing wallet-related types such as wallet, accout and store.
+Go library containing wallet-related types such as wallet, account and store.
 
 ** Please note that this library uses standards that are not yet final, and as such may result in changes that alter public and private keys.  Do not use this library for production use just yet **
 
