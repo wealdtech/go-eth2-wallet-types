@@ -46,6 +46,21 @@ type Account interface {
 	Sign(data []byte) (e2types.Signature, error)
 }
 
+// DistributedAccount is the interface for Ethereum 2 distributed accounts.
+type DistributedAccount interface {
+	// CompositePublicKey provides the composite public key for the account.
+	CompositePublicKey() e2types.PublicKey
+
+	// Threshold provides the threshold to make a valid composite signature.
+	Threshold() uint32
+
+	// VerificationVector provides the composite verification vector for regeneration.
+	VerificationVector() []e2types.PublicKey
+
+	// Participants provides the participants that hold the composite key.
+	Participants() map[uint64]string
+}
+
 // AccountPrivateKeyProvider is the interface for accounts that can provide a private key.
 type AccountPrivateKeyProvider interface {
 	// PrivateKey provides the private key for the account.

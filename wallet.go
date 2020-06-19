@@ -41,11 +41,6 @@ type Wallet interface {
 	// IsUnlocked returns true if the wallet is unlocked.
 	IsUnlocked() bool
 
-	// CreateAccount creates a new account in the wallet.
-	// The only rule for names is that they cannot start with an underscore (_) character.
-	// This will error if an account with the name already exists.
-	CreateAccount(name string, passphrase []byte) (Account, error)
-
 	// Accounts provides all accounts in the wallet.
 	Accounts() <-chan Account
 
@@ -56,6 +51,14 @@ type Wallet interface {
 	// AccountByName provides a single account from the wallet given its name.
 	// This will error if the account is not found.
 	AccountByName(name string) (Account, error)
+}
+
+// WalletAccountCreator is the interface for wallets that can create an account.
+type WalletAccountCreator interface {
+	// CreateAccount creates a new account in the wallet.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name already exists.
+	CreateAccount(name string, passphrase []byte) (Account, error)
 }
 
 // WalletKeyProvider is the interface for wallets that can provide a key.
@@ -76,4 +79,12 @@ type WalletAccountImporter interface {
 	// The only rule for names is that they cannot start with an underscore (_) character.
 	// This will error if an account with the name already exists.
 	ImportAccount(name string, key []byte, passphrase []byte) (Account, error)
+}
+
+// WalletDistributedAccountImporter is the interface for wallets that can import distributed accounts.
+type WalletDistributedAccountImporter interface {
+	// ImportDistributedAccount creates a new distributed account in the wallet from provided data.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name already exists.
+	ImportDistributedAccount(name string, privatekey []byte, threshold uint32, verificationVector [][]byte, participants map[uint64]string, passphrase []byte) (Account, error)
 }
