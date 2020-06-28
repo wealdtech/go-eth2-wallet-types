@@ -134,6 +134,7 @@ type WalletDistributedAccountImporter interface {
 // Wallet is a generic interface for wallets, providing minimal required functionality.
 type Wallet interface {
 	WalletIDProvider
+	WalletTypeProvider
 	WalletNameProvider
 	WalletVersionProvider
 	WalletAccountsProvider
