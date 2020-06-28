@@ -53,12 +53,20 @@ type Wallet interface {
 	AccountByName(name string) (Account, error)
 }
 
-// WalletAccountCreator is the interface for wallets that can create an account.
+// WalletAccountCreator is the interface for wallets that can create accounts.
 type WalletAccountCreator interface {
 	// CreateAccount creates a new account in the wallet.
 	// The only rule for names is that they cannot start with an underscore (_) character.
 	// This will error if an account with the name already exists.
 	CreateAccount(name string, passphrase []byte) (Account, error)
+}
+
+// WalletDistributedAccountCreator is the interface for wallets that can create distributed accounts.
+type WalletDistributedAccountCreator interface {
+	// CreateDistributedAccount creates a new distributed account in the wallet.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name already exists.
+	CreateDistributedAccount(name string, particpants uint32, signingThreshold uint32, passphrase []byte) (Account, error)
 }
 
 // WalletKeyProvider is the interface for wallets that can provide a key.
