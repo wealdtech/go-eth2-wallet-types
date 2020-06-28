@@ -124,7 +124,7 @@ type AccountPrivateKeyProvider interface {
 	PrivateKey(ctx context.Context) (e2types.PrivateKey, error)
 }
 
-// Account is a generic interface for wallets, providing minimal required functionality.
+// Account is a generic interface for accounts, providing minimal required functionality.
 type Account interface {
 	AccountIDProvider
 	AccountNameProvider
