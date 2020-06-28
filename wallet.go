@@ -76,7 +76,7 @@ type WalletAccountByNameProvider interface {
 }
 
 // WalletAccountsByPathProvider is the interface for wallets that provide accounts given a path.
-type WalletAccountsByNameProvider interface {
+type WalletAccountsByPathProvider interface {
 	// AccountsByPath provides all matching accounts in the wallet.
 	AccountsByPath(ctx context.Context, path string) <-chan Account
 }
