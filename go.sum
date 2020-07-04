@@ -34,8 +34,8 @@ github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+
 github.com/grpc-ecosystem/grpc-gateway v1.13.0/go.mod h1:8XEsbTttt/W+VvjtQhLACqCisSPWTxCZ7sBRjU6iH9c=
 github.com/herumi/bls-eth-go-binary v0.0.0-20200621110855-298ffb6847bc h1:1ANh6XSZu8Quo4d03TDFhqiFjgUicMdavTtPm6B+RfE=
 github.com/herumi/bls-eth-go-binary v0.0.0-20200621110855-298ffb6847bc/go.mod h1:luAnRm3OsMQeokhGzpYmc0ZKwawY7o87PUEP11Z7r7U=
-github.com/herumi/bls-eth-go-binary v0.0.0-20200624084043-9b7da5962ccb h1:rVlcEzuK/AJKzJp890JoSpJdU3hgak53oMB9mypa05s=
-github.com/herumi/bls-eth-go-binary v0.0.0-20200624084043-9b7da5962ccb/go.mod h1:luAnRm3OsMQeokhGzpYmc0ZKwawY7o87PUEP11Z7r7U=
+github.com/herumi/bls-eth-go-binary v0.0.0-20200703070911-61704dac4ad1 h1:da7FT3Bhp8GCx6TwDPQio/7GLRLR5hcZvoRb89hfc08=
+github.com/herumi/bls-eth-go-binary v0.0.0-20200703070911-61704dac4ad1/go.mod h1:luAnRm3OsMQeokhGzpYmc0ZKwawY7o87PUEP11Z7r7U=
 github.com/kisielk/errcheck v1.2.0/go.mod h1:/BMXB+zMLi60iA8Vv6Ksmxu/1UDYcXs4uQLJ+jE2L00=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
