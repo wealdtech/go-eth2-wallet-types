@@ -97,12 +97,6 @@ type WalletDistributedAccountCreator interface {
 	CreateDistributedAccount(ctx context.Context, name string, particpants uint32, signingThreshold uint32, passphrase []byte) (Account, error)
 }
 
-// WalletKeyProvider is the interface for wallets that can provide a key.
-type WalletKeyProvider interface {
-	// Key returns the wallet's key.
-	Key(ctx context.Context) ([]byte, error)
-}
-
 // WalletExporter is the interface for wallets that can export themselves.
 type WalletExporter interface {
 	// Export exports the entire wallet, protected by an additional passphrase.

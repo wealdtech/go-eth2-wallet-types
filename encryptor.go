@@ -22,8 +22,8 @@ type Encryptor interface {
 	Version() uint
 
 	// Encrypt encrypts a byte array with its encryption mechanism and key
-	Encrypt(data []byte, key []byte) (map[string]interface{}, error)
+	Encrypt(data []byte, key string) (map[string]interface{}, error)
 
 	// Decrypt encrypts a byte array with its encryption mechanism and key
-	Decrypt(data map[string]interface{}, key []byte) ([]byte, error)
+	Decrypt(data map[string]interface{}, key string) ([]byte, error)
 }
