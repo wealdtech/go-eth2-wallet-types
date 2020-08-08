@@ -89,6 +89,14 @@ type WalletAccountCreator interface {
 	CreateAccount(ctx context.Context, name string, passphrase []byte) (Account, error)
 }
 
+// WalletPathedAccountCreator is the interface for wallets that can create accounts with explicit HD paths.
+type WalletPathedAccountCreator interface {
+	// CreatePathedAccount creates a new account in the wallet with a given path.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name or path already exists.
+	CreatePathedAccount(ctx context.Context, path string, name string, passphrase []byte) (Account, error)
+}
+
 // WalletDistributedAccountCreator is the interface for wallets that can create distributed accounts.
 type WalletDistributedAccountCreator interface {
 	// CreateDistributedAccount creates a new distributed account in the wallet.
