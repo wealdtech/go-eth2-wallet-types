@@ -94,6 +94,21 @@ type AccountProtectingSigner interface {
 		domain []byte) (e2types.Signature, error)
 }
 
+// AccountProtectingMultiSigner is the interface for accounts that sign multiple requests with protection.
+type AccountProtectingMultiSigner interface {
+	// SignBeaconAttestations signs multiple beacon attestations with protection.
+	SignBeaconAttestations(ctx context.Context,
+		slot uint64,
+		accounts []Account,
+		committeeIndices []uint64,
+		blockRoot []byte,
+		sourceEpoch uint64,
+		sourceRoot []byte,
+		targetEpoch uint64,
+		targetRoot []byte,
+		domain []byte) ([]e2types.Signature, error)
+}
+
 // AccountCompositePublicKeyProvider is the interface for accounts that can provide a composite public key.
 type AccountCompositePublicKeyProvider interface {
 	// CompositePublicKey provides the composite public key for the account.
