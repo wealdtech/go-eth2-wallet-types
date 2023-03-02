@@ -155,6 +155,15 @@ type DistributedAccount interface {
 	AccountParticipantsProvider
 }
 
+// ShardedAccount is generic interface for sharded accounts, providing minimal required functionality.
+type ShardedAccount interface {
+	AccountIDProvider
+	AccountNameProvider
+	AccountCompositePublicKeyProvider
+	AccountSigningThresholdProvider
+	AccountParticipantsProvider
+}
+
 // AccountMetadataProvider provides metadata for an account.  It is used for various accounting purposes, for example to ensure that no two
 // accounts with the same name exist in a single wallet.
 type AccountMetadataProvider interface {

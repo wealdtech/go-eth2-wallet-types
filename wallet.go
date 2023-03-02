@@ -133,6 +133,20 @@ type WalletDistributedAccountImporter interface {
 		passphrase []byte) (Account, error)
 }
 
+// WalletShardedAccountImporter is the interface for wallets that can import sharded accounts.
+type WalletShardedAccountImporter interface {
+	// ImportShardedAccount creates a new sharded account in the wallet from provided data.
+	// The only rule for names is that they cannot start with an underscore (_) character.
+	// This will error if an account with the name already exists.
+	ImportShardedAccount(ctx context.Context,
+		name string,
+		key []byte,
+		signingThreshold uint32,
+		compositePublicKey []byte,
+		participants map[uint64]string,
+		passphrase []byte) (Account, error)
+}
+
 // Wallet is a generic interface for wallets, providing minimal required functionality.
 type Wallet interface {
 	WalletIDProvider
