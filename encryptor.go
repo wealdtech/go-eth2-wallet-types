@@ -1,4 +1,4 @@
-// Copyright 2019, 2020 Weald Technology Trading
+// Copyright 2019 - 2023 Weald Technology Trading.
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -15,15 +15,15 @@ package types
 
 // Encryptor is the interface for encrypting and decrypting sensitive information in wallets.
 type Encryptor interface {
-	// Name() provides the name of the encryptor
+	// Name() provides the name of the encryptor.
 	Name() string
 
-	// Version() provides the version of the encryptor
+	// Version() provides the version of the encryptor.
 	Version() uint
 
-	// Encrypt encrypts a byte array with its encryption mechanism and key
-	Encrypt(data []byte, key string) (map[string]interface{}, error)
+	// Encrypt encrypts a byte array with its encryption mechanism and key.
+	Encrypt(data []byte, key string) (map[string]any, error)
 
-	// Decrypt encrypts a byte array with its encryption mechanism and key
-	Decrypt(data map[string]interface{}, key string) ([]byte, error)
+	// Decrypt encrypts a byte array with its encryption mechanism and key.
+	Decrypt(data map[string]any, key string) ([]byte, error)
 }

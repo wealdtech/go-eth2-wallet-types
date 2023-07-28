@@ -164,8 +164,8 @@ type ShardedAccount interface {
 	AccountParticipantsProvider
 }
 
-// AccountMetadataProvider provides metadata for an account.  It is used for various accounting purposes, for example to ensure that no two
-// accounts with the same name exist in a single wallet.
+// AccountMetadataProvider provides metadata for an account.  It is used for various accounting purposes,
+// for example to ensure that no two accounts with the same name exist in a single wallet.
 type AccountMetadataProvider interface {
 	// WalletID provides the ID for the wallet.
 	WalletID() uuid.UUID

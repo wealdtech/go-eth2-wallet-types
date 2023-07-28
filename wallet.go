@@ -1,4 +1,4 @@
-// Copyright 2019, 2020 Weald Technology Trading
+// Copyright 2019 - 2023 Weald Technology Trading.
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -102,7 +102,15 @@ type WalletDistributedAccountCreator interface {
 	// CreateDistributedAccount creates a new distributed account in the wallet.
 	// The only rule for names is that they cannot start with an underscore (_) character.
 	// This will error if an account with the name already exists.
-	CreateDistributedAccount(ctx context.Context, name string, particpants uint32, signingThreshold uint32, passphrase []byte) (Account, error)
+	CreateDistributedAccount(ctx context.Context,
+		name string,
+		particpants uint32,
+		signingThreshold uint32,
+		passphrase []byte,
+	) (
+		Account,
+		error,
+	)
 }
 
 // WalletExporter is the interface for wallets that can export themselves.
