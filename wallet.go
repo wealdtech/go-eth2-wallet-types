@@ -119,6 +119,12 @@ type WalletExporter interface {
 	Export(ctx context.Context, passphrase []byte) ([]byte, error)
 }
 
+type WalletBatchCreator interface {
+	// BatchWallet encrypts all accounts in a single entity, allowing for faster
+	// decryption of wallets with large numbers of accounts.
+	BatchWallet(ctx context.Context, passphrases []string, batchPassphrase string) error
+}
+
 // WalletAccountImporter is the interface for wallets that can import accounts.
 type WalletAccountImporter interface {
 	// ImportAccount creates a new account in the wallet from an existing private key.

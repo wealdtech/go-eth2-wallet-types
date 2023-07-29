@@ -21,6 +21,9 @@ type Encryptor interface {
 	// Version() provides the version of the encryptor.
 	Version() uint
 
+	// String provides a string value for the encryptor.
+	String() string
+
 	// Encrypt encrypts a byte array with its encryption mechanism and key.
 	Encrypt(data []byte, key string) (map[string]any, error)
 

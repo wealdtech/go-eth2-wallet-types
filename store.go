@@ -13,7 +13,11 @@
 
 package types
 
-import "github.com/google/uuid"
+import (
+	"context"
+
+	"github.com/google/uuid"
+)
 
 // Store is the interface for wallet stores.  It is used to store and access data provided by wallets, both wallets themselves
 // as well as keys inside the wallets.
@@ -50,6 +54,18 @@ type Store interface {
 
 	// RetrieveAccountsIndex retrieves the index of accounts for a given wallet.
 	RetrieveAccountsIndex(walletID uuid.UUID) ([]byte, error)
+}
+
+// BatchStorer is an interface for storing account batches.
+type BatchStorer interface {
+	// StoreBatch stores wallet batch data.  It will fail if it cannot store the data.
+	StoreBatch(ctx context.Context, walletID uuid.UUID, walletName string, data []byte) error
+}
+
+// BatchRetriever is an interface for retrieving account batches.
+type BatchRetriever interface {
+	// RetrieveBatch retrieves the batch of accounts for a given wallet.
+	RetrieveBatch(ctx context.Context, walletID uuid.UUID) ([]byte, error)
 }
 
 // StoreProvider is the interface provides a store.
