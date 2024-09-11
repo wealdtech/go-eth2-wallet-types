@@ -1,6 +1,8 @@
 module github.com/wealdtech/go-eth2-wallet-types/v2
 
-go 1.20
+go 1.22
+
+toolchain go1.22.4
 
 require (
 	github.com/google/uuid v1.3.0

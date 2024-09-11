@@ -18,5 +18,8 @@ coverage.html
 # Vim
 *.sw?
 
+# Intellij and friends
+.idea/
+
 # Local TODO
 TODO.md
