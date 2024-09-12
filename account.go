@@ -108,7 +108,8 @@ type AccountProtectingMultiSigner interface {
 		targetRoot []byte,
 		domain []byte) ([]e2types.Signature, error)
 
-	SignGenericMulti(ctx context.Context, data []byte, domain []byte, accounts []Account) ([]e2types.Signature, error)
+	// SignGenericMulti signs multiple accounts with the same generic data root.
+	SignGenericMulti(ctx context.Context, accounts []Account, data []byte, domain []byte) ([]e2types.Signature, error)
 }
 
 // AccountCompositePublicKeyProvider is the interface for accounts that can provide a composite public key.
